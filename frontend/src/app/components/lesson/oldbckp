@@ -1,0 +1,41 @@
+<div class="px-3 py-3">
+    
+    <mat-spinner *ngIf="lessons.length === 0  || spiner"></mat-spinner>
+<!-- 
+    <mat-card *ngFor="let lesson of lessons" style="margin-top:10px;">
+        <mat-card-header>
+            <mat-card-title>{{lesson.title}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p>
+                {{lesson.content}}
+            </p>
+        </mat-card-content>
+    </mat-card> -->
+
+
+<mat-card  *ngIf="!spiner">
+    <h1 class="mx-3 my-2" mat-card-header>
+        <mat-card-title class="text-center">{{lesson.title}}</mat-card-title>
+    </h1>
+    
+    <div class="text-center w-100" mat-card-content [innerText]="lesson.content">
+
+            <!-- <img style="height:100%; width: 100%;" src="{{ product.imageUrl }}" /> -->
+    </div>
+    
+    <div class="row py-3 mx-3 my-3 text-center" mat-card-actions>
+        <div class="col w-10"><button (click) ="lastLesson()" mat-button> Last</button></div>
+        <div class="col pt-2 w-60 text-white"> <span>Lesson {{currentLesson + 1 }} of {{ numberOfLessons }}</span></div>
+        <div class="col w-10 "> <button (click) ="nextLesson()" mat-button> Next</button></div>
+
+      <!-- <button mat-button> </button> -->
+      
+     
+            
+    </div>
+</mat-card>
+
+    
+</div>
+
