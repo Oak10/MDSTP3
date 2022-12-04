@@ -1,0 +1,6 @@
+:host ::ng-deep .p-accordion-tab {
+    margin-bottom: 0;
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
