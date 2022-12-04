@@ -14,6 +14,9 @@ import { QuizService } from './services/quiz.service';
 
 import {PanelModule} from 'primeng/panel';
 import {AccordionModule} from 'primeng/accordion';
+import {MenubarModule} from 'primeng/menubar';
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import {AccordionModule} from 'primeng/accordion';
     AppRoutingModule,
     HttpClientModule,
     PanelModule,
-    AccordionModule
+    AccordionModule,
+    MenubarModule,
+    InputTextModule,
+    ButtonModule
   ],
   providers: [ LessonService, QuizService],
   bootstrap: [AppComponent]
