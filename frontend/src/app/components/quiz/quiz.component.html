@@ -1,1 +1,50 @@
-<p>quiz works!</p>
+<div class="container p-3">
+
+    <!-- <mat-spinner *ngIf="lessons.length === 0  || spiner"></mat-spinner> -->
+
+    <div *ngIf="quizSize !== 0">
+        
+        <!-- header -->
+        <div>  
+            {{answer.question}}
+        </div>
+
+        <!-- questions -->
+        <div>
+            <div *ngIf="answer.answerU">
+                {{answer.answerU}}
+            </div>
+            <div *ngIf="answer.answerD">
+                {{answer.answerD}}
+            </div>
+            <div *ngIf="answer.answerT">
+                {{answer.answerT}}
+            </div>
+            <div *ngIf="answer.answerQ">
+                {{answer.answerQ}}
+            </div>
+            <div *ngIf="answer.answerC">
+                {{answer.answerC}}
+            </div>
+            <div *ngIf="answer.answerS">
+                {{answer.answerS}}
+            </div>
+        </div>
+
+
+        <div class="row py-3 mx-3 my-3 text-center">
+            <div class="col w-10"><button (click) ="lastAnswer()"> Last</button></div>
+            <div class="col pt-2 w-60"> <span>Lesson {{currentAnswerNumber + 1 }} of {{ quizSize }}</span></div>
+            <div class="col w-10 "> <button (click) ="nextAnswer()"> Next</button></div>
+    
+          <!-- <button mat-button> </button> -->    
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
