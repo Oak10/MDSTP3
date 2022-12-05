@@ -12,11 +12,20 @@ import { QuizComponent } from './components/quiz/quiz.component';
 import { LessonService } from './services/lesson.service';
 import { QuizService } from './services/quiz.service';
 
+import { FormsModule } from '@angular/forms'; 
+
+
 import {PanelModule} from 'primeng/panel';
 import {AccordionModule} from 'primeng/accordion';
 import {MenubarModule} from 'primeng/menubar';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import {ListboxModule} from 'primeng/listbox';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ConfirmationService} from 'primeng/api';
+import {ToastModule} from 'primeng/toast';
+import {MessageService} from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -30,13 +39,19 @@ import { ButtonModule } from 'primeng/button';
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     PanelModule,
     AccordionModule,
     MenubarModule,
     InputTextModule,
-    ButtonModule
+    ButtonModule,
+    ProgressSpinnerModule,
+    ListboxModule,
+    ConfirmDialogModule,
+    ToastModule
+    // RadioButtonModule
   ],
-  providers: [ LessonService, QuizService],
+  providers: [ LessonService, QuizService, ConfirmationService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

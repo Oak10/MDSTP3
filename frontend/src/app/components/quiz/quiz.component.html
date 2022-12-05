@@ -1,43 +1,42 @@
+<!-- https://primefaces.org/primeng/confirmdialog -->
+<p-confirmDialog header="Results" 
+acceptLabel="Try Again"
+rejectLabel="Lessons"
+acceptIcon="pi pi-undo"
+rejectIcon="pi pi-book"
+icon="pi pi-exclamation-triangle"></p-confirmDialog>
+
+<p-toast></p-toast>
+
+
+
 <div class="container p-3">
 
+
+    <div class="w-100 text-center" *ngIf="quizSize === 0 || spiner">
+        <p-progressSpinner></p-progressSpinner>
+    </div>
     <!-- <mat-spinner *ngIf="lessons.length === 0  || spiner"></mat-spinner> -->
 
-    <div *ngIf="quizSize !== 0">
-        
+    <div *ngIf="quizSize !== 0 && !spiner">
+
         <!-- header -->
-        <div>  
-            {{answer.question}}
-        </div>
+        <div class="p-3 p-listbox m-3">
+            <h4>{{answer.question}}</h4>
 
-        <!-- questions -->
-        <div>
-            <div *ngIf="answer.answerU">
-                {{answer.answerU}}
+            <div class="py-3">
+                <p-listbox [options]="answersToShow" [(ngModel)]="selectedAnswer"></p-listbox>
             </div>
-            <div *ngIf="answer.answerD">
-                {{answer.answerD}}
-            </div>
-            <div *ngIf="answer.answerT">
-                {{answer.answerT}}
-            </div>
-            <div *ngIf="answer.answerQ">
-                {{answer.answerQ}}
-            </div>
-            <div *ngIf="answer.answerC">
-                {{answer.answerC}}
-            </div>
-            <div *ngIf="answer.answerS">
-                {{answer.answerS}}
-            </div>
-        </div>
+        
+            <div class="row py-3 mx-3 text-center">
+                <div class="col pt-2 w-60"> <span>Question {{currentAnswerNumber + 1 }} of {{ quizSize }}</span></div>
 
+                <div *ngIf="quizSize - 1 !=  currentAnswerNumber" class="col w-10 "> <button pButton type="button" label="Next Question" (click)="nextAnswer()"></button></div>
+                <div *ngIf="quizSize - 1 ==  currentAnswerNumber" class="col w-10 "> <button pButton type="button" label="End Quiz" (click)="confirm()"></button></div>
 
-        <div class="row py-3 mx-3 my-3 text-center">
-            <div class="col w-10"><button (click) ="lastAnswer()"> Last</button></div>
-            <div class="col pt-2 w-60"> <span>Lesson {{currentAnswerNumber + 1 }} of {{ quizSize }}</span></div>
-            <div class="col w-10 "> <button (click) ="nextAnswer()"> Next</button></div>
-    
-          <!-- <button mat-button> </button> -->    
+                <!-- <button mat-button> </button> -->
+            </div>
+        
         </div>
 
 
@@ -45,6 +44,3 @@
 
 
 </div>
-
-
-
