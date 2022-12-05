@@ -1,46 +1,36 @@
 <!-- https://primefaces.org/primeng/confirmdialog -->
-<p-confirmDialog header="Results" 
+<p-confirmDialog 
+[closable]= false
+[breakpoints]="{'960px': '75vw', '640px': '100vw'}" [style]="{width: '50vw'}"
+header="Results" 
 acceptLabel="Try Again"
 rejectLabel="Lessons"
 acceptIcon="pi pi-undo"
 rejectIcon="pi pi-book"
-icon="pi pi-exclamation-triangle"></p-confirmDialog>
+></p-confirmDialog>
 
 <p-toast></p-toast>
 
-
-
 <div class="container p-3">
-
-
     <div class="w-100 text-center" *ngIf="quizSize === 0 || spiner">
         <p-progressSpinner></p-progressSpinner>
     </div>
-    <!-- <mat-spinner *ngIf="lessons.length === 0  || spiner"></mat-spinner> -->
-
-    <div *ngIf="quizSize !== 0 && !spiner">
-
+   
+    <div *ngIf="quizSize !== 0 && !spiner" class="p-3 p-listbox m-3">
         <!-- header -->
-        <div class="p-3 p-listbox m-3">
-            <h4>{{answer.question}}</h4>
+        <h3>{{answer.question}}</h3>
 
-            <div class="py-3">
-                <p-listbox [options]="answersToShow" [(ngModel)]="selectedAnswer"></p-listbox>
-            </div>
-        
-            <div class="row py-3 mx-3 text-center">
-                <div class="col pt-2 w-60"> <span>Question {{currentAnswerNumber + 1 }} of {{ quizSize }}</span></div>
-
-                <div *ngIf="quizSize - 1 !=  currentAnswerNumber" class="col w-10 "> <button pButton type="button" label="Next Question" (click)="nextAnswer()"></button></div>
-                <div *ngIf="quizSize - 1 ==  currentAnswerNumber" class="col w-10 "> <button pButton type="button" label="End Quiz" (click)="confirm()"></button></div>
-
-                <!-- <button mat-button> </button> -->
-            </div>
-        
+        <!-- body -->
+        <div class="py-3">
+            <p-listbox [options]="answersToShow" [(ngModel)]="selectedAnswer"></p-listbox>
         </div>
-
-
+        
+        <!-- footer -->
+        <div class="row py-3 mx-3 text-center">
+            <div class="col pt-2 w-60"> <span>Question {{currentAnswerNumber + 1 }} of {{ quizSize }}</span></div>
+            <div *ngIf="quizSize - 1 !=  currentAnswerNumber" class="col w-10 "> <button pButton type="button" label="Next Question" (click)="nextAnswer()"></button></div>
+            <div *ngIf="quizSize - 1 ==  currentAnswerNumber" class="col w-10 "> <button pButton type="button" label="End Quiz" (click)="confirm()"></button></div>
+        </div>
     </div>
-
 
 </div>
