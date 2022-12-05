@@ -1,0 +1,3 @@
+FROM node:16
+WORKDIR /frontend
+EXPOSE 4200
