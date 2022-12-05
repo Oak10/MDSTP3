@@ -12,25 +12,14 @@ import { Router } from "@angular/router"
   styleUrls: ['./quiz.component.css']
 })
 
-
-
 export class QuizComponent {
   quiz: Quiz[] = [];
   answer!: Quiz;
   currentAnswerNumber!: number;
   quizSize!: number;
   spiner!: boolean;
-
-
-
-
-
-
-
-  // https://www.primefaces.org/primeng/listbox
   answersToShow: String[] = [];
   wrongAnswers: String[] = [];
-
   selectedAnswer: String = "";
 
   constructor(
@@ -42,7 +31,6 @@ export class QuizComponent {
   ngOnInit(): void {
     this.getQuiz();
   }
-
 
   getQuiz() {
     this.quizService.getQuizList().subscribe(
@@ -57,8 +45,6 @@ export class QuizComponent {
 
       });
   }
-
-
 
   updateQuestionsForm() {
     var answersToShowAux = [];
@@ -91,16 +77,12 @@ export class QuizComponent {
   }
 
 
-
   public async nextAnswer() {
-
     if (this.selectedAnswer === "") {
       this.messageService.add({ severity: 'custom', summary: 'Select Answer', detail: 'Select an answer to proceed' });
       return;
     }
-
     this.spiner = true;
-
     if (this.currentAnswerNumber < this.quizSize - 1) {
       await this.sleep(500);
       this.validateAnswer();
@@ -109,7 +91,6 @@ export class QuizComponent {
       this.selectedAnswer = "";
       this.updateQuestionsForm()
     }
-
     this.spiner = false;
   }
 
@@ -131,13 +112,20 @@ export class QuizComponent {
       return;
     }
 
-    // TODO: construct final message && deal wit X button !!
     this.validateAnswer();
+    var finalMessage = ""
+    var numberRightA = this.quizSize - this.wrongAnswers.length;
+    var wrongMessage = `<h4>Right answers:</h4><li>` + numberRightA + ` of ` + this.quizSize + `<br><br><h4>Wrong answer: </h4>`
 
-    // var finalMessage = `Wrong answer <br> <li> cood be worst!!! `
-
-    var finalMessage = `Wrong answer number: ` + this.wrongAnswers.length;
-
+    if(this.wrongAnswers.length > 0){
+      for (let i = 0; i < this.wrongAnswers.length; i++){
+        wrongMessage = wrongMessage + `<li>` + this.wrongAnswers[i];
+      }
+      finalMessage = wrongMessage;
+    }else{
+      finalMessage = "<h4>Congratulations</h4><br> All answers are correct."
+    }
+    
     this.confirmationService.confirm({
       message: finalMessage,
       accept: () => {
@@ -157,17 +145,4 @@ export class QuizComponent {
     });
   }
 
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
