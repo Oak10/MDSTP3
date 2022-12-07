@@ -26,6 +26,8 @@ import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
 import {ToastModule} from 'primeng/toast';
 import {MessageService} from 'primeng/api';
+import {DialogModule} from 'primeng/dialog';
+
 
 @NgModule({
   declarations: [
@@ -48,7 +50,10 @@ import {MessageService} from 'primeng/api';
     ProgressSpinnerModule,
     ListboxModule,
     ConfirmDialogModule,
-    ToastModule
+    ToastModule,
+    //Modal,
+    DialogModule
+
     // RadioButtonModule
   ],
   providers: [ LessonService, QuizService, ConfirmationService, MessageService],

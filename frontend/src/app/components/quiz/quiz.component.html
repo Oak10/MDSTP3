@@ -11,12 +11,20 @@ rejectIcon="pi pi-book"
 
 <p-toast></p-toast>
 
+<p-dialog [closable]= false header="Wrong Answer" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}"
+    [draggable]="false" [resizable]="false">
+    <div class="m-0" [innerText]="wrongAnswerMessage"></div>
+        <ng-template pTemplate="footer">
+        <p-button icon="pi pi-spin pi-spinner" (click)="setNextAnswer()" label="Next Question" styleClass="p-button-text"></p-button>
+        </ng-template>
+</p-dialog>
+
 <div class="container p-3">
     <div class="w-100 text-center" *ngIf="quizSize === 0 || spiner">
         <p-progressSpinner></p-progressSpinner>
     </div>
    
-    <div *ngIf="quizSize !== 0 && !spiner" class="p-3 p-listbox m-3">
+    <div *ngIf="quizSize !== 0 && !spiner" class="px-3 p-listbox m-3 py-3">
         <!-- header -->
         <h3>{{answer.question}}</h3>
 
@@ -28,7 +36,7 @@ rejectIcon="pi pi-book"
         <!-- footer -->
         <div class="row py-3 mx-3 text-center">
             <div class="col pt-2 w-60"> <span>Question {{currentAnswerNumber + 1 }} of {{ quizSize }}</span></div>
-            <div *ngIf="quizSize - 1 !=  currentAnswerNumber" class="col w-10 "> <button pButton type="button" label="Next Question" (click)="nextAnswer()"></button></div>
+            <div *ngIf="quizSize - 1 !=  currentAnswerNumber" class="col w-10 "> <button pButton type="button" label="Validate Answer" (click)="nextAnswer()"></button></div>
             <div *ngIf="quizSize - 1 ==  currentAnswerNumber" class="col w-10 "> <button pButton type="button" label="End Quiz" (click)="confirm()"></button></div>
         </div>
     </div>

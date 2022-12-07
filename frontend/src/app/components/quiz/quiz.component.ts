@@ -21,6 +21,10 @@ export class QuizComponent {
   answersToShow: String[] = [];
   wrongAnswers: String[] = [];
   selectedAnswer: String = "";
+  // DIALOG:
+  displayModal!: boolean;
+  wrongAnswerMessage!: string;
+
 
   constructor(
     private quizService: QuizService,
@@ -48,56 +52,66 @@ export class QuizComponent {
 
   updateQuestionsForm() {
     var answersToShowAux = [];
-
     if (this.answer.answerU != null) {
       answersToShowAux.push(this.answer.answerU)
     }
-
     if (this.answer.answerD != null) {
       answersToShowAux.push(this.answer.answerD)
     }
-
     if (this.answer.answerT != null) {
       answersToShowAux.push(this.answer.answerT)
     }
-
     if (this.answer.answerQ != null) {
       answersToShowAux.push(this.answer.answerQ)
     }
-
     if (this.answer.answerC != null) {
       answersToShowAux.push(this.answer.answerC)
     }
     if (this.answer.answerS != null) {
       answersToShowAux.push(this.answer.answerS)
     }
-
     this.answersToShow = answersToShowAux;
-
   }
 
 
-  public async nextAnswer() {
+  nextAnswer() {
     if (this.selectedAnswer === "") {
       this.messageService.add({ severity: 'custom', summary: 'Select Answer', detail: 'Select an answer to proceed' });
       return;
     }
-    this.spiner = true;
     if (this.currentAnswerNumber < this.quizSize - 1) {
-      await this.sleep(500);
       this.validateAnswer();
-      this.currentAnswerNumber++;
-      this.answer = this.quiz[this.currentAnswerNumber]
-      this.selectedAnswer = "";
-      this.updateQuestionsForm()
     }
-    this.spiner = false;
   }
 
 
   validateAnswer() {
     if (this.selectedAnswer !== this.answer.correctAnswer) {
       this.wrongAnswers.push(this.answer.question);
+      this.wrongAnswerMessage = `Right answer:\n - ` + this.answer.correctAnswer  + `\n\n\nBetter Luck next time!`;
+      this.showModalDialog();
+      return;
+    }
+    
+    this.setNextAnswer();
+  }
+
+  async setNextAnswer(){
+    this.spiner = true;
+    await this.sleep(500);
+    this.displayModal=false
+    this.currentAnswerNumber++;
+      this.answer = this.quiz[this.currentAnswerNumber]
+      this.selectedAnswer = "";
+      this.updateQuestionsForm()
+      this.spiner = false;
+  }
+
+
+  validateAnswerAndNextQuestion() {
+    if (this.selectedAnswer !== this.answer.correctAnswer) {
+      this.wrongAnswers.push(this.answer.question);
+      this.showModalDialog();
     };
   }
 
@@ -125,6 +139,8 @@ export class QuizComponent {
     }else{
       finalMessage = "<h4>Congratulations</h4><br> All answers are correct."
     }
+
+    //https://www.primefaces.org/primeng/dialog
     
     this.confirmationService.confirm({
       message: finalMessage,
@@ -144,5 +160,11 @@ export class QuizComponent {
       }
     });
   }
+
+
+  showModalDialog() {
+    this.displayModal = true;
+}
+
 
 }
