@@ -5,10 +5,11 @@ import { LessonComponent } from './components/lesson/lesson.component';
 import { QuizComponent } from './components/quiz/quiz.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full'},
-  { path: 'home', component: HomeComponent },
+  { path: '', redirectTo: 'lesson', pathMatch: 'full'},
   { path: 'lesson', component: LessonComponent },
+  { path: 'about', component: HomeComponent },
   { path: 'quiz', component: QuizComponent },
+  { path: '**', component: LessonComponent },
 
 
 ];

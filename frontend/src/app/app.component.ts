@@ -6,31 +6,31 @@ import { MenuItem } from 'primeng/api';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'frontend';
 
   items: MenuItem[] = [];
+  apiLoaded = false;
 
   ngOnInit() {
     this.items = [
-      { 
-        label: 'Home',  
-        icon:'pi pi-fw pi-home',
-        routerLink: ['home']
+      {
+        label: 'Lessons',
+        icon: 'pi pi-fw pi-book',
+        routerLink: ['lesson']
       },
-        { 
-          label: 'Lessons',  
-          icon:'pi pi-fw pi-book',
-          routerLink: ['lesson']
-        },
-        { 
-          label: 'Quiz',  
-          icon:'pi pi-fw pi-question',
-          routerLink: ['quiz']
-        },
-
+      {
+        label: 'Quiz',
+        icon: 'pi pi-fw pi-question',
+        routerLink: ['quiz']
+      },
+      {
+        label: 'About',
+        icon: 'pi pi-fw pi-info',
+        routerLink: ['about']
+      }
     ];
-}
+  }
 
 
 }

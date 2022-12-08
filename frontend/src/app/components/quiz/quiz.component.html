@@ -1,36 +1,79 @@
-<!-- https://primefaces.org/primeng/confirmdialog -->
-<p-confirmDialog 
-[closable]= false
-[breakpoints]="{'960px': '75vw', '640px': '100vw'}" [style]="{width: '50vw'}"
-header="Results" 
-acceptLabel="Try Again"
-rejectLabel="Lessons"
-acceptIcon="pi pi-undo"
-rejectIcon="pi pi-book"
-></p-confirmDialog>
-
 <p-toast></p-toast>
 
-<div class="container p-3">
-    <div class="w-100 text-center" *ngIf="quizSize === 0 || spiner">
-        <p-progressSpinner></p-progressSpinner>
-    </div>
-   
-    <div *ngIf="quizSize !== 0 && !spiner" class="p-3 p-listbox m-3">
-        <!-- header -->
-        <h3>{{answer.question}}</h3>
+<p-dialog [closable]=false header="Wrong Answer" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}"
+    [draggable]="false" [resizable]="false">
+    <div class="m-0" [innerText]="wrongAnswerMessage"></div>
+    <ng-template pTemplate="footer">
+        <p-button *ngIf="quizSize - 1 !=  currentAnswerNumber" icon="pi pi-spin pi-spinner" (click)="setNextAnswer()"
+            label="Next Question" styleClass="p-button-text"></p-button>
+        <p-button *ngIf="quizSize - 1 ==  currentAnswerNumber" icon="pi pi-spin pi-spinner" (click)="setToShowResults()"
+            label="Show Results" styleClass="p-button-text"></p-button>
+    </ng-template>
+</p-dialog>
 
-        <!-- body -->
-        <div class="py-3">
-            <p-listbox [options]="answersToShow" [(ngModel)]="selectedAnswer"></p-listbox>
-        </div>
-        
-        <!-- footer -->
-        <div class="row py-3 mx-3 text-center">
-            <div class="col pt-2 w-60"> <span>Question {{currentAnswerNumber + 1 }} of {{ quizSize }}</span></div>
-            <div *ngIf="quizSize - 1 !=  currentAnswerNumber" class="col w-10 "> <button pButton type="button" label="Next Question" (click)="nextAnswer()"></button></div>
-            <div *ngIf="quizSize - 1 ==  currentAnswerNumber" class="col w-10 "> <button pButton type="button" label="End Quiz" (click)="confirm()"></button></div>
+
+<!-- ----------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+<div *ngIf="showSpiner" class="w-100 text-center">
+    <p-progressSpinner></p-progressSpinner>
+</div>
+
+
+
+<div *ngIf="!showResults && !showSpiner" class="px-3 p-listbox m-3 py-3">
+    <!-- header -->
+    <h2>{{answer.question}}</h2>
+    <!-- body -->
+    <div class="py-3">
+        <p-listbox [options]="answersToShow" [(ngModel)]="selectedAnswer"></p-listbox>
+    </div>
+    <!-- footer -->
+    <div class="row py-3 mx-3 text-center">
+        <div class="col pt-2 w-60"> <span>Question {{currentAnswerNumber + 1 }} of {{ quizSize }}</span></div>
+        <div class="col w-10 "> <button pButton type="button" label="Validate Answer" (click)="nextAnswer()"></button>
         </div>
     </div>
+</div>
 
+
+<div *ngIf="showResults && !showSpiner" class="px-3 p-listbox m-3 py-3">
+    <!-- header -->
+    <h1 class="px-3">Results</h1>
+
+
+    <!-- body -->
+    <div class="container p-3">
+        <div class="p-3 m-3" *ngIf="wrongAnswers.length == 0">
+            <h4>Congratulations</h4>
+            <p class="py-3">You answered {{quizSize - wrongAnswers.length}} out of {{quizSize}} questions correctly</p>
+        </div>
+
+
+        <div class="p-3 m-3" *ngIf="wrongAnswers.length > 0">
+            <h4>Right answers:</h4>
+            <ul>
+                <li class="py-1"> {{quizSize - wrongAnswers.length}} of {{quizSize}} </li>
+            </ul>
+        </div>
+
+        <div class="p-3 m-3" *ngIf="wrongAnswers.length > 0">
+            <h4>Wrong answers:</h4>
+            <ul *ngFor="let wAnswer of wrongAnswers">
+                <li> {{wAnswer}} </li>
+            </ul>
+        </div>
+
+
+    </div>
+
+
+
+    <!-- footer -->
+    <div class="row py-3 mx-3 text-center">
+        <div class="col w-10 my-1"> <button pButton (click)="setToFirstAnswer() " icon="pi pi-undo" type="button"
+                label="Retry Quiz"></button></div>
+        <div class="col w-10 my-1"> <button pButton (click)="navigateToLesson()" icon="pi pi-book" type="button"
+                label="Go to Lessons"></button></div>
+        <!-- (click)="confirm()  -->
+    </div>
 </div>

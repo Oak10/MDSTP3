@@ -26,6 +26,11 @@ import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
 import {ToastModule} from 'primeng/toast';
 import {MessageService} from 'primeng/api';
+import {DialogModule} from 'primeng/dialog';
+import {ImageModule} from 'primeng/image';
+
+import { YouTubePlayerModule } from '@angular/youtube-player'
+
 
 @NgModule({
   declarations: [
@@ -48,7 +53,13 @@ import {MessageService} from 'primeng/api';
     ProgressSpinnerModule,
     ListboxModule,
     ConfirmDialogModule,
-    ToastModule
+    ToastModule,
+    //Modal,
+    DialogModule,
+    YouTubePlayerModule,
+    ImageModule
+    
+
     // RadioButtonModule
   ],
   providers: [ LessonService, QuizService, ConfirmationService, MessageService],
