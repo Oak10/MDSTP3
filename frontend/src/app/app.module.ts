@@ -27,6 +27,9 @@ import {ConfirmationService} from 'primeng/api';
 import {ToastModule} from 'primeng/toast';
 import {MessageService} from 'primeng/api';
 import {DialogModule} from 'primeng/dialog';
+import {ImageModule} from 'primeng/image';
+
+import { YouTubePlayerModule } from '@angular/youtube-player'
 
 
 @NgModule({
@@ -52,7 +55,10 @@ import {DialogModule} from 'primeng/dialog';
     ConfirmDialogModule,
     ToastModule,
     //Modal,
-    DialogModule
+    DialogModule,
+    YouTubePlayerModule,
+    ImageModule
+    
 
     // RadioButtonModule
   ],

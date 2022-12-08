@@ -20,6 +20,12 @@ public class LessonEntity {
     @Column(name="title", length=255, nullable=true, unique=true)
     private String title;
 
+    @Column(name="youtube_video_id", length=255, nullable=true)
+    private String youtubeVideoId;
+
+    @Column(name="foto_path", length=255, nullable=true)
+    private String fotoPath;
+
     @Column(name="content", length=100, nullable=true)
     private String content;
 

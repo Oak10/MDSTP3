@@ -7,17 +7,26 @@ import { LessonService } from 'src/app/services/lesson.service';
   templateUrl: './lesson.component.html',
   styleUrls: ['./lesson.component.css']
 })
-export class LessonComponent implements OnInit{
+export class LessonComponent implements OnInit {
   lessons: Lesson[] = [];
 
+  videoId = 'hyNu5i_6lKA';
+  apiLoaded=false;
 
-  constructor (private lessonService: LessonService){}
+  constructor(private lessonService: LessonService) { }
 
   ngOnInit(): void {
     this.listLessons();
+    // https://www.angularjswiki.com/angular/how-to-embed-youtube-videos-in-angular-apps/#step-1-install-angular-youtube-player-component-package
+    if (!this.apiLoaded) {
+      const tag = document.createElement('script');
+      tag.src = 'https://www.youtube.com/iframe_api';
+      document.body.appendChild(tag);
+      this.apiLoaded = true;
+    }
   }
 
-  listLessons(){
+  listLessons() {
     this.lessonService.getLessonsList().subscribe(
       data => {
         this.lessons = data;
