@@ -1,17 +1,20 @@
-<div class="px-3 py-1">
-    <p-accordion>
-        <p-accordionTab styleClass="lesson.customClass" [transitionOptions]="'200ms'" *ngFor="let lesson of lessons" header="{{lesson.title}}">
+<div class="container">
+    <div class="px-2 py-1">
+        <p-accordion>
+            <p-accordionTab styleClass="lesson.customClass" [transitionOptions]="'200ms'" *ngFor="let lesson of lessons"
+                header="{{lesson.title}}">
 
-            <div class="text-center px-3 py-1">
-                <youtube-player [videoId]="lesson.youtubeVideoId" suggestedQuality="hd720"> </youtube-player>
-            </div>
+                <div class="text-center px-3 py-1">
+                    <youtube-player [videoId]="lesson.youtubeVideoId" suggestedQuality="hd720"> </youtube-player>
+                </div>
 
-            <div *ngIf="lesson?.fotoPath" class="text-center px-3 py-1">
-                <p-image src="{{lesson.fotoPath}}" alt="Image" width="600" [preview]="true"></p-image>
-            </div>
+                <div *ngIf="lesson?.fotoPath" class="text-center px-3 py-1">
+                    <p-image src="{{lesson.fotoPath}}" alt="Image" width="600" [preview]="true"></p-image>
+                </div>
 
-            <div class="text-center px-3 py-1" [innerText]="lesson.content"></div>
+                <div class="text-center px-3 py-1" [innerText]="lesson.content"></div>
 
-        </p-accordionTab>
-    </p-accordion>
+            </p-accordionTab>
+        </p-accordion>
+    </div>
 </div>

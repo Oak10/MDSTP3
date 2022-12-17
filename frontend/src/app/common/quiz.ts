@@ -8,5 +8,5 @@ export class Quiz {
         public answerC: string,
         public answerS: string,
         public correctAnswer: string
-        ){}
+    ) { }
 }

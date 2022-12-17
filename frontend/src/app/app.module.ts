@@ -6,7 +6,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
 import { LessonComponent } from './components/lesson/lesson.component';
 import { QuizComponent } from './components/quiz/quiz.component';
 import { LessonService } from './services/lesson.service';
@@ -28,16 +27,22 @@ import {ToastModule} from 'primeng/toast';
 import {MessageService} from 'primeng/api';
 import {DialogModule} from 'primeng/dialog';
 import {ImageModule} from 'primeng/image';
+import {TableModule} from 'primeng/table'
 
-import { YouTubePlayerModule } from '@angular/youtube-player'
+import { YouTubePlayerModule } from '@angular/youtube-player';
+import { RefsComponent } from './components/refs/refs.component'
+import { RefsService } from './services/refs.service';
+import { ScoreService } from './services/score.service';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     LessonComponent,
-    QuizComponent
+    QuizComponent,
+    RefsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -57,12 +62,13 @@ import { YouTubePlayerModule } from '@angular/youtube-player'
     //Modal,
     DialogModule,
     YouTubePlayerModule,
-    ImageModule
+    ImageModule,
+    TableModule
     
 
     // RadioButtonModule
   ],
-  providers: [ LessonService, QuizService, ConfirmationService, MessageService],
+  providers: [ LessonService, QuizService, RefsService , ScoreService, ConfirmationService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -11,7 +11,7 @@ export class LessonComponent implements OnInit {
   lessons: Lesson[] = [];
 
   videoId = 'hyNu5i_6lKA';
-  apiLoaded=false;
+  apiLoaded = false;
 
   constructor(private lessonService: LessonService) { }
 
@@ -30,7 +30,7 @@ export class LessonComponent implements OnInit {
     this.lessonService.getLessonsList().subscribe(
       data => {
         this.lessons = data;
-        console.log(data);
       });
   }
+
 }
