@@ -8,6 +8,7 @@ public interface ScoreRepository extends JpaRepository<ScoreEntity, Long> {
     ScoreEntity findOneByUserName(String name);
     public List<ScoreEntity> findAllByOrderByScoreDesc();
     public List<ScoreEntity> findAllByOrderByScoreAsc();
+    public List<ScoreEntity> findTop3ByOrderByScoreDesc();
 
 
 }

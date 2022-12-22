@@ -1,6 +1,8 @@
 <div class="container">
     <div class="m-3 py-3">
-        <p-table [value]="refs" styleClass="p-datatable-striped" [tableStyle]="{'min-width': '50rem'}">
+        <p-table [value]="refs" [scrollable]="true" styleClass="p-datatable-striped" [tableStyle]="{'min-width': '50rem'}"
+        >
+        <!-- [globalFilterFields]="['userName']" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"  -->
             <ng-template pTemplate="header">
                 <tr>
                     <th>Author</th>

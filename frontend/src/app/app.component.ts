@@ -25,6 +25,11 @@ export class AppComponent implements OnInit {
         routerLink: ['quiz']
       },
       {
+        label: 'Score',
+        icon: 'pi pi-fw pi-list',
+        routerLink: ['score']
+      },
+      {
         label: 'References',
         icon: 'pi pi-fw pi-info',
         routerLink: ['refs']

@@ -17,21 +17,26 @@
 
         <div class="container px-3 py-1">
             <div>
-                <p-table [value]="scores" [scrollable]="true" scrollHeight="300px" styleClass="p-datatable-striped"
+                <div class="w-80 text-start pt-2 pb-1 mb-1">
+                    <b>Top 3</b>
+                </div>
+                <div class="px-2 pb-2">
+                    <p-table [value]="scores" [scrollable]="true"
                     [tableStyle]="{'min-width': '20rem'}" [globalFilterFields]="['userName']">
                     <ng-template pTemplate="header">
                         <tr>
-                            <th pSortableColumn="userName">User <p-sortIcon field="userName"></p-sortIcon></th>
-                            <th pSortableColumn="score">Score (%)<p-sortIcon field="score"></p-sortIcon></th>
+                            <th class="text-center">User</th>
+                            <th class="text-center">Score (%)</th>
                         </tr>
                     </ng-template>
                     <ng-template pTemplate="body" let-score>
                         <tr>
-                            <td>{{score.userName}}</td>
-                            <td>{{score.score}}</td>
+                            <td class="text-center">{{score.userName}}</td>
+                            <td class="text-center">{{score.score}}</td>
                         </tr>
                     </ng-template>
                 </p-table>
+                </div>
             </div>
         </div>
         <div class="row container p-3">

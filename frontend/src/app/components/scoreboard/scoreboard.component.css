@@ -1,0 +1,21 @@
+
+:host ::ng-deep .p-paginator .p-paginator-current {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    color: #883cae;
+    min-width: 2.357rem;
+    height: 2.357rem;
+    margin: 0px 114px 0px 0px;
+    padding: 0 0.5rem;
+}
+
+/* :host ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    color: #883cae;
+    min-width: 2.357rem;
+    height: 2.357rem;
+    margin: 0 5px 0 -1px;
+    transition: box-shadow 0.15s;
+    border-radius: 0;
+} */

@@ -17,6 +17,10 @@ export class ScoreService {
     return this.http.get<Score[]>(this.baseUrl);
   }
 
+  public getTopScoresList(): Observable<Score[]> {
+    return this.http.get<Score[]>(this.baseUrl + "/top");
+  }
+
 
   public registerNew(userName: string, currentScore: number){
 

@@ -157,12 +157,12 @@ export class QuizComponent {
   }
 
   showModalDialogScore() {
-    if (this.wrongAnswers.length == 0) {
+    if (this.wrongAnswers.length == 0 || this.quizSize == 0) {
       this.currentScore = 100;
     } else if (this.wrongAnswers.length == this.quizSize) {
       this.currentScore = 0;
     } else {
-      this.currentScore = Math.floor((this.wrongAnswers.length / this.quizSize) * 100);
+      this.currentScore = 100 - (Math.floor((this.wrongAnswers.length / this.quizSize) * 100));
     }
     this.updateScoreList();
 
@@ -173,7 +173,7 @@ export class QuizComponent {
   }
 
   updateScoreList() {
-    this.scoreService.getScoresList().subscribe(
+    this.scoreService.getTopScoresList().subscribe(
       data => {
         this.scores = data;
         this.displayModalScore = true;

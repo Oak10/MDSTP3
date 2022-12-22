@@ -17,12 +17,17 @@ public class ScoresController {
     ScoreRepository scoreRepository;
 
     @GetMapping
-    public ResponseEntity<List<ScoreEntity>> getQuiz(){
-        return ResponseEntity.ok(scoreRepository.findAllByOrderByScoreAsc());
+    public ResponseEntity<List<ScoreEntity>> getScore(){
+        return ResponseEntity.ok(scoreRepository.findAllByOrderByScoreDesc());
+    }
+
+    @GetMapping("/top")
+    public ResponseEntity<List<ScoreEntity>> getScoreTop(){
+        return ResponseEntity.ok(scoreRepository.findTop3ByOrderByScoreDesc());
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ScoreEntity> create(@RequestBody ScoreEntity scoreEntity) {
+    public ResponseEntity<ScoreEntity> createScore(@RequestBody ScoreEntity scoreEntity) {
         ScoreEntity scoreIfExist = scoreRepository.findOneByUserName(scoreEntity.getUserName());
 
         ScoreEntity response;

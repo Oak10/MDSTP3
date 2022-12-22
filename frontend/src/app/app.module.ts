@@ -34,6 +34,7 @@ import { RefsComponent } from './components/refs/refs.component'
 import { RefsService } from './services/refs.service';
 import { ScoreService } from './services/score.service';
 import { HomeComponent } from './components/home/home.component';
+import { ScoreboardComponent } from './components/scoreboard/scoreboard.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { HomeComponent } from './components/home/home.component';
     LessonComponent,
     QuizComponent,
     RefsComponent,
-    HomeComponent
+    HomeComponent,
+    ScoreboardComponent
   ],
   imports: [
     BrowserModule,
