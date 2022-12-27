@@ -4,3 +4,8 @@
     padding-left: 15px;
     padding-right: 15px;
 }
+
+
+.tab1 {
+    tab-size: 2;
+}
