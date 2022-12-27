@@ -76,3 +76,18 @@ Donec id ornare enim. Aenean porta blandit felis nec bibendum. Pellentesque id a
 blandit diam eget, tincidunt enim. Fusce congue velit orci, a dapibus metus elementum vitae. Duis et maximus nisi. Sed lacus sem,
 fringilla quis eleifend feugiat, laoreet ac metus.
 ');
+
+INSERT INTO refs (author, post_date, access_date, title, link)
+VALUES ('SpringBoot',
+        '24-11-2022',
+        '17-12-2022',
+        'Spring Boot 3.0.0',
+        'https://spring.io/projects/spring-boot'
+);
+
+
+INSERT INTO refs (author, post_date, title)
+VALUES ('MDS',
+        '12-1-1999',
+        'MLOps - great book'
+);
