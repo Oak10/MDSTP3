@@ -16,18 +16,18 @@ services:
       - postgres_data:/var/lib/postgresql/data
 
 
-  backend:
-    build:
-      context: ./demo
-      dockerfile: Dockerfile
-    command: sh -c "./mvnw clean compile spring-boot:run"
-    ports:
-      - 8080:8080
-      - 5005:5005
-    restart: on-failure:3
-    user: nonroot
-    volumes:
-      - ./demo:/app
+  # backend:
+  #   build:
+  #     context: ./demo
+  #     dockerfile: Dockerfile
+  #   command: sh -c "./mvnw clean compile spring-boot:run"
+  #   ports:
+  #     - 8080:8080
+  #     - 5005:5005
+  #   restart: on-failure:3
+  #   user: nonroot
+  #   volumes:
+  #     - ./demo:/app
 
 
   frontend:

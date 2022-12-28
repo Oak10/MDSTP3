@@ -4,6 +4,8 @@ import { Quiz } from 'src/app/common/quiz';
 import { QuizService } from 'src/app/services/quiz.service';
 
 import { Router } from "@angular/router"
+import { ScoreService } from 'src/app/services/score.service';
+import { Score } from 'src/app/common/score';
 
 
 @Component({
@@ -25,16 +27,24 @@ export class QuizComponent {
   // DIALOG:
   displayModal!: boolean;
   wrongAnswerMessage!: string;
+  //DIALOGRSULT
+  displayModalScore!: boolean;
+  scores: Score[] = [];
+  currentScore = 0;
+  userName!: string;
+
 
 
   constructor(
     private quizService: QuizService,
     private router: Router,
-    private messageService: MessageService) { }
+    private messageService: MessageService,
+    private scoreService: ScoreService) { }
 
 
   ngOnInit(): void {
     this.getQuiz();
+    this.userName = "default01";
   }
 
 
@@ -114,11 +124,12 @@ export class QuizComponent {
     this.showSpiner = false;
   }
 
-  
+
   async setNextAnswer() {
     this.showSpiner = true;
     await this.sleep(500);
     this.displayModal = false
+    this.displayModalScore = false;
     this.currentAnswerNumber++;
     this.answer = this.quiz[this.currentAnswerNumber]
     this.updateQuestionsForm()
@@ -145,8 +156,38 @@ export class QuizComponent {
     this.displayModal = true;
   }
 
-  navigateToLesson(){
+  showModalDialogScore() {
+    if (this.wrongAnswers.length == 0 || this.quizSize == 0) {
+      this.currentScore = 100;
+    } else if (this.wrongAnswers.length == this.quizSize) {
+      this.currentScore = 0;
+    } else {
+      this.currentScore = 100 - (Math.floor((this.wrongAnswers.length / this.quizSize) * 100));
+    }
+    this.updateScoreList();
+
+  }
+
+  navigateToLesson() {
     this.router.navigate(['/lesson']);
+  }
+
+  updateScoreList() {
+    this.scoreService.getTopScoresList().subscribe(
+      data => {
+        this.scores = data;
+        this.displayModalScore = true;
+      });
+  }
+
+  async registerNewScore() {
+    this.scoreService.registerNew(this.userName, this.currentScore);
+    this.displayModalScore = false;
+    this.showSpiner = true;
+    await this.sleep(500);
+    this.messageService.add({ severity: 'success', summary: 'Updated', detail: 'The score list has been updated' });
+    this.showSpiner = false;
+  
   }
 
 
