@@ -1,6 +1,14 @@
-FROM openjdk:17-jdk-slim
-
-RUN groupadd -g 1000 nonroot && \
-useradd -m -d /home/nonroot -s /bin/bash -g 1000 -u 1000 nonroot
-
-WORKDIR /app
+FROM eclipse-temurin:17-jdk-jammy as builder
+WORKDIR /opt/app
+COPY .mvn/ .mvn
+COPY mvnw pom.xml ./
+RUN ./mvnw dependency:go-offline
+COPY ./src ./src
+RUN ./mvnw clean install -DskipTests
+ 
+ 
+FROM eclipse-temurin:17-jre-jammy
+WORKDIR /opt/app
+EXPOSE 8080
+COPY --from=builder /opt/app/target/*.jar /opt/app/*.jar
+ENTRYPOINT ["java", "-jar", "/opt/app/*.jar" ]

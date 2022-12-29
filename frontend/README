@@ -1,0 +1,25 @@
+# Build Docker Image:
+```
+docker build -t dockerhub_name/image_name:tag dockerfile_location
+#Example
+docker build -t claudiooak/angular-mds:1.0.0 .
+```
+
+# Push image
+```
+docker login
+docker push claudiooak/angular-mds:1.0.0
+```
+
+# run Container 
+```
+docker run -d -p 80:80 claudiooak/angular-mds:1.0.0
+# http://ip_address:80/
+```
+
+
+# spring
+```
+docker build -t claudiooak/spring-mds:1.0.0
+docker push claudiooak/spring-mds:1.0.0
+```
