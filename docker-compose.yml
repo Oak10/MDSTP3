@@ -13,7 +13,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
 
   backend:
-    image: claudiooak/spring-mds:1.0.0
+    image: claudiooak/spring-mds:1.0.3
     ports:
       - 8080:8080
     restart: on-failure:3

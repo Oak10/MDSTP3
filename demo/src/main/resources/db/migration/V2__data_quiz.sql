@@ -21,9 +21,9 @@ VALUES(
 	'MLOps encourages collaboration',
 	'MLOps encourages reproducibility',
 	'MLOps encourages continuity',
-	'MLOps encourages cloud infrastructure',
+	'MLOps encourages static structure',
 	'MLOps encourages testing and monitoring',
-	'MLOps encourages cloud infrastructure'
+	'MLOps encourages static structure'
 );
 INSERT INTO quiz (question, answer_u, answer_d, answer_t, correct_answer)
 VALUES(
@@ -60,15 +60,6 @@ VALUES(
 );
 INSERT INTO quiz (question, answer_u, answer_d, answer_t, answer_q, correct_answer)
 VALUES(
-	'What should you version to keep your models reproducible?',
-	'Data, code, parameters, environment and artifacts',
-	'Data, code and TensorFlow checkpoints',
-	'Code only',
-	'Data only',
-	'Data, code, parameters, environment and artifacts'
-);
-INSERT INTO quiz (question, answer_u, answer_d, answer_t, answer_q, correct_answer)
-VALUES(
 	'MlOps practices offer several advantages, which of the following is not considered an MlOps advantage',
 	'Best Collaboration',
 	'Faster Deployment',
@@ -83,15 +74,6 @@ VALUES(
 	'False',
 	'True'
 );
-INSERT INTO quiz (question, answer_u, answer_d, answer_t, answer_q, correct_answer)
-VALUES(
-	'Which of the following procedures is not part of MlOps practices?',
-	'Engagement: collection, selection and preparation of data to be used in model training',
-	'Find and select the most efficient model from all tested models and experiments',
-	'Develop and send the selected model to production',
-	'Create new features in the chosen model',
-	'Create new features in the chosen model'
-);
 INSERT INTO quiz (question, answer_u, answer_d, correct_answer)
 VALUES(
 	'Are there any techniques in MlOps that allow you to improve the model "on the fly" while it is being used?',
@@ -102,7 +84,7 @@ VALUES(
 INSERT INTO quiz (question, answer_u, answer_d, correct_answer)
 VALUES(
 	'MlOps represents a set of techniques and tools that facilitate the deployment of machine learning models in production.
-MlOps can be considered as the combination of DevOps and Machine Laearning?',
+MlOps can be considered as the combination of DevOps and Machine Learning?',
 	'Yes',
 	'No',
 	'Yes'
@@ -111,7 +93,7 @@ INSERT INTO quiz (question, answer_u, answer_d, answer_t, answer_q, correct_answ
 VALUES(
 	'The reason why machine learning pipelines are a core concept of MLOps is...',
 	'ML pipelines make machine learning more visible and shared',
-	'ML pipelines make machine learning more reproducibl',
+	'ML pipelines make machine learning more reproducible',
 	'ML pipelines make machine learning more efficient and automated',
 	'All of the above',
 	'All of the above'
@@ -123,36 +105,4 @@ VALUES(
 	'It’s the engineering task of exposing an ML model to real use',
 	'It’s the data science task of visualizing predictions',
 	'It’s the engineering task of exposing an ML model to real use'
-);
-INSERT INTO quiz (question, answer_u, answer_d, answer_t, correct_answer)
-VALUES(
-	'What is the difference between edge inference and online inference?',
-	'Edge inference happens on a device near the end-user, online inference happens on a central server',
-	'Online inference always uses Kubernetes while edge inference doesn’t',
-	'Online inference can be monitored while edge inference cannot',
-	'Edge inference happens on a device near the end-user, online inference happens on a central server'
-);
-INSERT INTO quiz (question, answer_u, answer_d, answer_t, correct_answer)
-VALUES(
-	'What is the difference between batch inference and online inference?',
-	'Batch inference happens on a local computer, online inference happens in the cloud',
-	'In online, inference happens one request at a time while in batch, it happens in bulk',
-	'Batch inference is only suitable for prototyping',
-	'In online, inference happens one request at a time while in batch, it happens in bulk'
-);
-INSERT INTO quiz (question, answer_u, answer_d, answer_t, correct_answer)
-VALUES(
-	'What is one of the main functions of an MLOps platform?',
-	'Selecting the optimal Python framework, like TensorFlow, for training your models',
-	'Orchestrating the training and deployment of machine learning models',
-	'Improving your GPT-3 model performance',
-	'Orchestrating the training and deployment of machine learning models'
-);
-INSERT INTO quiz (question, answer_u, answer_d, answer_t, correct_answer)
-VALUES(
-	'Which of these products are examples of MLOps platforms?',
-	'Hadoop, Kafka, Spark',
-	'Amazon SageMaker, KubeFlow, Valohai',
-	'PyTorch, scikit-learn, Tensorflow',
-	'Amazon SageMaker, KubeFlow, Valohai'
 );
